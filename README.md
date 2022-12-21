@@ -1,20 +1,7 @@
 
 ## Data Models
 
-> **All models are defined in src/model.js**
-
-### Profile
-A profile can be either a `client` or a `contractor`. 
-clients create contracts with contractors. contractor does jobs for clients and get paid.
-Each profile has a balance property.
-
-### Contract
-A contract between and client and a contractor.
-Contracts have 3 statuses, `new`, `in_progress`, `terminated`. contracts are considered active only when in status `in_progress`
-Contracts group jobs within them.
-
-### Job
-contractor get paid for jobs by clients under a certain contract.
+> **All models are defined in src/models**
 
 ## Getting Set Up
 
@@ -42,25 +29,20 @@ The exercise requires [Node.js](https://nodejs.org/en/) to be installed. We reco
 
 ## Technical Notes
 
-  
-
 - The server is running with [nodemon](https://nodemon.io/) which will automatically restart for you when you modify and save a file.
 
-- The database provider is SQLite, which will store data in a file local to your repository called `database.sqlite3`. The ORM [Sequelize](http://docs.sequelizejs.com/) is on top of it. You should only have to interact with Sequelize
+- The database provider is SQLite
 
-- To authenticate users use the `getProfile` middleware that is located under src/middleware/getProfile.js. users are authenticated by passing `profile_id` in the request header. after a user is authenticated his profile will be available under `req.profile`. make sure only users that are on the contract can access their contracts.
+- To authenticate users use the `getProfile` middleware that is located under src/middleware/getProfile.js. users are authenticated by passing `profile_id` in the request header. after a user is authenticated his profile will be available under `req.profile`.  only users that are on the contract can access their contracts.
+
 - The server is running on port 3001.
 
   
 
 ## APIs
 
-  
 
-Below is a list of the required API's for the application.
-
-
-1. ***GET*** `/contracts/:id` - This API is broken 😵! it should return the contract only if it belongs to the profile calling. better fix that!
+1. ***GET*** `/contracts/:id` - Return the contract only if it belongs to the profile calling
 
 1. ***GET*** `/contracts` - Returns a list of contracts belonging to a user (client or contractor), the list should only contain non terminated contracts.
 
