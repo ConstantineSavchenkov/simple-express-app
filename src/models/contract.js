@@ -1,5 +1,11 @@
 const Sequelize = require('sequelize');
 
+module.exports.statuses = {
+  New: 'new',
+  InProgress: 'in_progress',
+  Terminated: 'terminated',
+};
+
 module.exports.init = (connection)=>{
 /**  A contract between and client and a contractor.
 contracts are considered active only when in status `in_progress`
@@ -12,7 +18,10 @@ Contracts group jobs within them. */
           allowNull: false,
         },
         status: {
-          type: Sequelize.ENUM('new', 'in_progress', 'terminated'),
+          type: Sequelize.ENUM(
+              module.exports.statuses.New,
+              module.exports.statuses.InProgress,
+              module.exports.statuses.Terminated),
         },
       },
       {

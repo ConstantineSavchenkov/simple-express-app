@@ -3,6 +3,7 @@ const { Profile, Contract, Job } = require('../src/model');
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
 
+// eslint-disable-next-line require-jsdoc
 async function seed() {
   // create tables
   await Profile.sync({ force: true });

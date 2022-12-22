@@ -10,6 +10,7 @@
     },
     "rules": {
         "new-cap": 0,
+        "max-len": ["error", { "code": 105 }],
         "space-before-blocks": [
             "warn",
             "always"

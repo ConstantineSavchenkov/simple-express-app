@@ -2,6 +2,9 @@ const app = require('./app');
 
 init();
 
+/**
+ * initiate the service
+ */
 async function init() {
   try {
     app.listen(3001, () => {

@@ -15,7 +15,7 @@ module.exports.init = (connection)=>{
         },
         paid: {
           type: Sequelize.BOOLEAN,
-          default: false,
+          defaultValue: false,
         },
         paymentDate: {
           type: Sequelize.DATE,
