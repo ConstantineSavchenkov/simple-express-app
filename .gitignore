@@ -2,6 +2,8 @@ node_modules
 .DS_STORE
 database.sqlite3
 
+.idea/*
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
