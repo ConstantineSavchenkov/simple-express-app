@@ -1,6 +1,7 @@
 const request = require('supertest');
 const assert = require('assert');
 const ContractModule = require('../models/contract');
+const ProfileModule = require('../models/profile');
 
 describe('Checking /admin/best-profession', function() {
   let app;
@@ -17,7 +18,7 @@ describe('Checking /admin/best-profession', function() {
         lastName: 'Boss',
         profession: 'Boss',
         balance: 231.11,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
         id: 2,
@@ -25,7 +26,7 @@ describe('Checking /admin/best-profession', function() {
         lastName: 'Torvalds',
         profession: 'Programmer',
         balance: 1214,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 3,
@@ -33,7 +34,7 @@ describe('Checking /admin/best-profession', function() {
         lastName: 'Boy',
         profession: 'HR',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 4,
@@ -41,7 +42,7 @@ describe('Checking /admin/best-profession', function() {
         lastName: 'Girl',
         profession: 'Killer',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Contract.create({
         id: 1,
@@ -169,7 +170,7 @@ describe('Checking /admin/best-clients', function() {
         lastName: 'Boss',
         profession: 'Boss',
         balance: 231.11,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
         id: 2,
@@ -177,7 +178,7 @@ describe('Checking /admin/best-clients', function() {
         lastName: 'Torvalds',
         profession: 'Programmer',
         balance: 1214,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 3,
@@ -185,7 +186,7 @@ describe('Checking /admin/best-clients', function() {
         lastName: 'Boy',
         profession: 'HR',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 4,
@@ -193,7 +194,7 @@ describe('Checking /admin/best-clients', function() {
         lastName: 'Girl',
         profession: 'Killer',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 5,
@@ -201,7 +202,7 @@ describe('Checking /admin/best-clients', function() {
         lastName: 'Pook',
         profession: 'Mañana',
         balance: 10000000,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Contract.create({
         id: 1,

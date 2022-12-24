@@ -1,6 +1,7 @@
 const request = require('supertest');
 const assert = require('assert');
 const ContractModule = require('../models/contract');
+const ProfileModule = require('../models/profile');
 
 describe('Checking /jobs/unpaid', function() {
   let app;
@@ -17,7 +18,7 @@ describe('Checking /jobs/unpaid', function() {
         lastName: 'Boss',
         profession: 'Boss',
         balance: 231.11,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
         id: 2,
@@ -25,7 +26,7 @@ describe('Checking /jobs/unpaid', function() {
         lastName: 'Torvalds',
         profession: 'Programmer',
         balance: 1214,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 3,
@@ -33,7 +34,7 @@ describe('Checking /jobs/unpaid', function() {
         lastName: 'Boy',
         profession: 'Pro',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Contract.create({
         id: 1,
@@ -122,7 +123,7 @@ describe('Checking /jobs/id:/pay', function() {
         lastName: 'Boss',
         profession: 'Boss',
         balance: 231.11,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
         id: 2,
@@ -130,7 +131,7 @@ describe('Checking /jobs/id:/pay', function() {
         lastName: 'Torvalds',
         profession: 'Programmer',
         balance: 1214,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 3,
@@ -138,7 +139,7 @@ describe('Checking /jobs/id:/pay', function() {
         lastName: 'Boy',
         profession: 'Pro',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Contract.create({
         id: 1,

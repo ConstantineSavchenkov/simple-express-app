@@ -1,6 +1,7 @@
 const request = require('supertest');
 const assert = require('assert');
 const ContractModule = require('../models/contract');
+const ProfileModule = require('../models/profile');
 
 describe('Checking /balances/deposit/:userId', function() {
   let app;
@@ -17,7 +18,7 @@ describe('Checking /balances/deposit/:userId', function() {
         lastName: 'Boss',
         profession: 'Boss',
         balance: 231.11,
-        type: 'client',
+        type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
         id: 2,
@@ -25,7 +26,7 @@ describe('Checking /balances/deposit/:userId', function() {
         lastName: 'Torvalds',
         profession: 'Programmer',
         balance: 1214,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Profile.create({
         id: 3,
@@ -33,7 +34,7 @@ describe('Checking /balances/deposit/:userId', function() {
         lastName: 'Boy',
         profession: 'Pro',
         balance: 1,
-        type: 'contractor',
+        type: ProfileModule.ProfileTypes.Contractor,
       }),
       Contract.create({
         id: 1,

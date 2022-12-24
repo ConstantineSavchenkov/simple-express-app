@@ -1,5 +1,10 @@
 const Sequelize = require('sequelize');
 
+module.exports.ProfileTypes = {
+  Client: 'client',
+  Contractor: 'contractor',
+};
+
 module.exports.init = (connection)=>{
 /** A profile can be either a `client` or a `contractor`.
 clients create contracts with contractors. contractor does jobs
@@ -23,7 +28,8 @@ for clients and get paid. */
           type: Sequelize.DECIMAL(12, 2),
         },
         type: {
-          type: Sequelize.ENUM('client', 'contractor'),
+          type: Sequelize.ENUM(module.exports.ProfileTypes.Client,
+              module.exports.ProfileTypes.Contractor),
         },
       },
       {
