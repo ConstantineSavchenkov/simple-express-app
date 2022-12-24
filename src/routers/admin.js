@@ -5,14 +5,14 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const checkParams = require('../middleware/checkParams');
 const { query, header } = require('express-validator');
-const moment = require('moment');
+const isDateCorrect = require('../app.validators').isDateCorrect;
 
 /**
  * @returns profession that earned the most money
  */
 router.get('/best-profession', [
-  query('start', 'invalid start date').custom((value) => moment(value).isValid()),
-  query('end', 'invalid end date').custom((value) => moment(value).isValid()),
+  query('start', 'invalid start date').custom(isDateCorrect),
+  query('end', 'invalid end date').custom(isDateCorrect),
   header('profile_id', 'invalid profile_id').isInt({ min: 1, allow_leading_zeroes: false }),
 ], checkParams, getProfile, async (req, res) => {
   const { Contract, Profile, Job } = req.app.get('models');
@@ -56,8 +56,8 @@ router.get('/best-profession', [
  * @returns clients the paid the most for jobs
  */
 router.get('/best-clients', [
-  query('start', 'invalid start date').custom((value) => moment(value).isValid()),
-  query('end', 'invalid end date').custom((value) => moment(value).isValid()),
+  query('start', 'invalid start date').custom(isDateCorrect),
+  query('end', 'invalid end date').custom(isDateCorrect),
   query('limit', 'invalid limit').isInt({ min: 1, allow_leading_zeroes: false }),
   header('profile_id', 'invalid profile_id').isInt({ min: 1, allow_leading_zeroes: false }),
 ], checkParams, getProfile, async (req, res) => {

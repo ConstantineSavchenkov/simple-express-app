@@ -280,6 +280,14 @@ describe('Checking /admin/best-clients', function() {
         paymentDate: '2020-08-17T19:11:26.737Z',
         ContractId: 1,
       }),
+      Job.create({
+        id: 8,
+        description: 'work',
+        price: 120,
+        paid: true,
+        paymentDate: '2020-08-17T19:17:26.737Z',
+        ContractId: 3,
+      }),
     ]);
 
     await new Promise((resolve, reject) => {
@@ -311,6 +319,7 @@ describe('Checking /admin/best-clients', function() {
         .expect('Content-Type', /json/)
         .then(({ body }) => {
           assert(body.length, 1);
+          assert.equal(body[0].paid, 7140 );
         });
   });
 
@@ -328,6 +337,12 @@ describe('Checking /admin/best-clients', function() {
         .expect('Content-Type', /json/)
         .then(({ body }) => {
           assert(body.length, 2);
+          assert.equal(body[0].paid, 7140 );
+          assert.equal(body[0].fullName, 'Pak Pook' );
+          assert.equal(body[0].id, 5 );
+          assert.equal(Object.keys(body[0]).length, 3 );
+          assert.equal(body[1].paid, 1354);
+          assert.equal(body[1].id, 1);
         });
   });
 
@@ -336,6 +351,19 @@ describe('Checking /admin/best-clients', function() {
         .get('/admin/best-clients')
         .query({
           start: 'cat',
+          end: '2020-09-15T19:11:26.737Z',
+          limit: 2,
+        })
+        .set('Content-Type', 'application/json')
+        .set('profile_id', 1)
+        .expect(400);
+  });
+
+  it('invalid date format', async () => {
+    await request(app)
+        .get('/admin/best-clients')
+        .query({
+          start: '05/12/2007',
           end: '2020-09-15T19:11:26.737Z',
           limit: 2,
         })
