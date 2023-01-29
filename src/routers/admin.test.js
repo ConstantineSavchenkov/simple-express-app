@@ -153,6 +153,18 @@ describe('Checking /admin/best-profession', function() {
           assert.equal(body, 'Programmer');
         });
   });
+
+  it('no best-profession', async () => {
+    await request(app)
+        .get('/admin/best-profession')
+        .query({
+          start: '2018-09-15T19:11:26.737Z',
+          end: '2019-09-15T19:11:26.737Z',
+        })
+        .set('Content-Type', 'application/json')
+        .set('profile_id', 1)
+        .expect(404);
+  });
 });
 
 describe('Checking /admin/best-clients', function() {
@@ -371,5 +383,18 @@ describe('Checking /admin/best-clients', function() {
         .set('Content-Type', 'application/json')
         .set('profile_id', 1)
         .expect(400);
+  });
+
+  it('no best clients', async () => {
+    await request(app)
+        .get('/admin/best-clients')
+        .query({
+          start: '2018-09-15T19:11:26.737Z',
+          end: '2019-09-15T19:11:26.737Z',
+          limit: 2,
+        })
+        .set('Content-Type', 'application/json')
+        .set('profile_id', 1)
+        .expect(404);
   });
 });

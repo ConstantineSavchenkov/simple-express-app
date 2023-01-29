@@ -13,7 +13,6 @@ describe('Checking /contracts/:id', function() {
     await s.sync({ force: true });
     await Promise.all([
       Profile.create({
-        id: 1,
         firstName: 'Mr',
         lastName: 'Robot',
         profession: 'Hacker',
@@ -21,7 +20,6 @@ describe('Checking /contracts/:id', function() {
         type: ProfileModule.ProfileTypes.Client,
       }),
       Profile.create({
-        id: 2,
         firstName: 'Linus',
         lastName: 'Torvalds',
         profession: 'Programmer',
@@ -29,7 +27,6 @@ describe('Checking /contracts/:id', function() {
         type: ProfileModule.ProfileTypes.Contractor,
       }),
       Contract.create({
-        id: 1,
         terms: 'bla bla bla',
         status: ContractModule.statuses.Terminated,
         ClientId: 1,

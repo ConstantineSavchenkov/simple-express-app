@@ -20,6 +20,7 @@ router.get('/best-profession', [
   const sequelize = req.app.get('sequelize');
 
   const results = await Job.findAll({
+    limit: 1,
     where: {
       paid: true,
       paymentDate: {

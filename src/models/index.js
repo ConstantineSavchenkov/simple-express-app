@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = process.env.NODE_ENV === 'test'?
 new Sequelize('sqlite::memory:') : new Sequelize({
   dialect: 'sqlite',
-  storage: '../../db/database.sqlite3',
+  storage: './db/database.sqlite3',
 });
 const fs = require('fs');
 const subs = fs.readdirSync(__dirname);

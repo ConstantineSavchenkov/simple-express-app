@@ -50,7 +50,7 @@ router.post('/deposit/:userId', [
   const [result] = results;
   const overallToPay = result.dataValues.overallToPay;
 
-  if (((amount+req.profile.balance) / overallToPay) * 100 > 25) {
+  if ((amount / overallToPay) * 100 > 25) {
     return res.status(400).end();
   }
 
